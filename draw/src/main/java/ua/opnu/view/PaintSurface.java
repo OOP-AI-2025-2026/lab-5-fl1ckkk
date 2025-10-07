@@ -1,6 +1,5 @@
 package ua.opnu.view;
 
-
 import ua.opnu.model.DrawShape;
 
 import javax.swing.*;
@@ -108,6 +107,12 @@ public class PaintSurface extends JComponent {
     // Встановлення типу фігури
     public void setShapeType(int type) {
         this.shapeType = type;
+    }
+
+    // Метод для очищення всіх фігур
+    public void clearShapes() {
+        shapes.clear();
+        repaint(); // Перемальовуємо поверхню після очищення
     }
 
     /*

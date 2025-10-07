@@ -72,15 +72,6 @@ public class DrawFrame extends JFrame {
 
         // 1. Кнопка для прямокутника
         BigTextButton rect = new BigTextButton("Rectangle");
-
-        // Це т.зв. слухач (Listener). Слухач - об'єкт деякого
-        // класу, який містить у собі певний метод.
-        // Цей об'єкт передається кнопці і коли настає певна
-        // подія, пов'язана з цією кнопкою (наприклад, ми натиснули на цю кнопку),
-        // кнопка бере цей слухач і викликає його метод.
-        // Таким чином ми можемо прописати той код, який буде
-        // виконуватися при настанні певних подій (наприклад, натискання на кнопку)
-        // Цей метод буде виконано, коли користувач натисне на кнопку
         rect.addActionListener(e -> {
             // Змінюємо поле всередині об'єкта області малювання,
             // щоб він знав, що тепер потрібно малювати прямокутники
@@ -99,10 +90,24 @@ public class DrawFrame extends JFrame {
         // Додаємо другу кнопку на верхню панель
         buttonPanel.add(rounded_rect);
 
-        // TODO: додати кнопку для еліпса за аналогією з іншими кнопками
-        // TODO: для додаткових балів додати кнопку "Clear" для очищення всіх фігур
+        // 3. Кнопка для еліпса
+        BigTextButton ellipse = new BigTextButton("Ellipse");
+        ellipse.addActionListener(e -> {
+            // Кажемо області малювання, що тепер потрібно малювати еліпси
+            surface.setShapeType(DrawShape.SHAPE_ELLIPSE);
+        });
+        // Додаємо кнопку для еліпса на верхню панель
+        buttonPanel.add(ellipse);
+
+        // 4. Кнопка "Clear" для очищення всіх фігур
+        BigTextButton clear = new BigTextButton("Clear");
+        clear.addActionListener(e -> {
+            // Викликаємо метод очищення всіх фігур
+            surface.clearShapes();
+        });
+        // Додаємо кнопку очищення на верхню панель
+        buttonPanel.add(clear);
 
         return buttonPanel;
     }
 }
-
